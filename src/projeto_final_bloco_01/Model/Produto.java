@@ -59,7 +59,7 @@ public abstract class Produto {
 		System.out.println("A Marca do veículo: "+this.marca);
 		System.out.println("O modelo do veículo: "+this.modelo);
 		System.out.println("O ano de fabricação do veículo: "+this.ano_de_fabricacao);
-		System.out.println("O valor do veículo R$:"+this.valor);
+		System.out.printf("O valor do veículo R$:%.2f \n",this.valor);
 	}
 	
 	

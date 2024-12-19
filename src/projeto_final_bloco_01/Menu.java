@@ -14,11 +14,16 @@ public class Menu {
 		int opcao = 0, ano_de_fabricacao=0,id;
 		String marca="", modelo="", tipo_de_veiculo="";
 		float valor=0.0f;
+
+//		public Veiculo(String marca, String modelo,String tipo_de_veiculo, float valor, int ano_de_fabricacao) {
+//			super(marca, modelo, valor, ano_de_fabricacao);
+//			this.tipo_de_veiculo = tipo_de_veiculo;
+//		}
 		
 		ProdutoController produto = new ProdutoController();
 		
-		produto.cadastrar(new Veiculo("Volvo","s60","SUV",2022,300000.0f));
-		produto.cadastrar(new Veiculo("Ferrari","sf90","SuperSportivo",2024,7000000.0f));
+		produto.cadastrar(new Veiculo("Volvo","s60 polestar","Sedan",2022,300000.0f));
+		produto.cadastrar(new Veiculo("Ferrari","Puro sangue","SUV de LUXO",2024,7000000.0f));
 		
 		Scanner ler = new Scanner(System.in);
 		
@@ -53,28 +58,36 @@ public class Menu {
 				System.out.println("Programa Finalizado!!");
 				break;
 			case 1:
-				System.out.println("Digite a marca do veiculo:");
-				marca = ler.next();
-				System.out.println("Digite o modelo do veiculo:");
-				modelo = ler.next();
-				System.out.println("Digite o ano de fabricação do veiculo:");
+				System.out.println("Digite a marca do veículo:");
+				marca = ler.nextLine();
+				ler.nextLine(); // Limpar o buffer
+
+				System.out.println("Digite o modelo do veículo:");
+				modelo = ler.nextLine();
+
+				System.out.println("Digite o ano de fabricação do veículo:");
 				ano_de_fabricacao = ler.nextInt();
-				System.out.println("Digite o tipo do veiculo:"); // se vai ser esportivo, utilitario, SUV;
-				tipo_de_veiculo = ler.next();
-				System.out.println("Digite o valor do veiculo");
+				ler.nextLine(); // Limpar o buffer
+
+				System.out.println("Digite a categoria do veículo:"); // se vai ser esportivo, utilitário, SUV;
+				tipo_de_veiculo = ler.nextLine();
+
+				System.out.println("Digite o valor do veículo:");
 				valor = ler.nextFloat();
+				ler.nextLine(); // Limpar o buffer
 				
 				produto.cadastrar(new Veiculo(marca, modelo, tipo_de_veiculo, ano_de_fabricacao, valor));
+				System.out.println("Inserido com Sucesso!");
 				keyPress();
 				break;				
 			case 2:
-				System.out.println(Cores.TEXT_WHITE_BOLD + "Listar todos os Produtos\n\n");
+				System.out.println(Cores.TEXT_WHITE_BOLD + "Listar todos os Produtos\n");
 				produto.listarTodas();
 					
 				keyPress();
 				break;
 			case 3: //para atualizar vai ter que reescrever os valores mas iremos usar funções para isso futuramente, por enquanto eu só declarei que ele ira digitar os dados
-				 System.out.println(Cores.TEXT_WHITE_BOLD + "Atualizar dados do Veículo\n\n");
+				 System.out.println(Cores.TEXT_WHITE_BOLD + "Atualizar dados do Veículo\n");
 				    System.out.println("Digite o ID do veículo a ser atualizado:");
 				    int idAtualizar = ler.nextInt();  // Lê o ID do veículo a ser atualizado
 
@@ -83,19 +96,31 @@ public class Menu {
 
 				    if (buscaProduto != null) {
 				        // Atualizar os dados do veículo existente
-				        System.out.println("Digite a nova marca do veículo:");
-				        buscaProduto.setMarca(ler.next());
-				        System.out.println("Digite o novo modelo do veículo:");
-				        buscaProduto.setModelo(ler.next());
-				        System.out.println("Digite o novo ano de fabricação do veículo:");
-				        buscaProduto.setAno_de_fabricacao(ler.nextInt());
-				        System.out.println("Digite a categoria do veículo:"); // Se vai ser esportivo, utilitário, SUV;
+				    	System.out.println("Digite a marca do veículo:");
+				    	marca = ler.nextLine();
+				    	ler.nextLine(); // Limpar o buffer
+
+				    	System.out.println("Digite o modelo do veículo:");
+				    	modelo = ler.nextLine();
+
+				    	System.out.println("Digite o ano de fabricação do veículo:");
+				    	ano_de_fabricacao = ler.nextInt();
+				    	ler.nextLine(); // Limpar o buffer
+
+				    	System.out.println("Digite a categoria do veículo:"); // se vai ser esportivo, utilitário, SUV;
+				    	tipo_de_veiculo = ler.nextLine();
+
+				    	System.out.println("Digite o valor do veículo:");
+				    	valor = ler.nextFloat();
+				    	ler.nextLine(); // Limpar o buffer
+				        System.out.println("Digite o novo tipo de veículo:"); // Se vai ser esportivo, utilitário, SUV;
 				        if (buscaProduto instanceof Veiculo) {
 				            ((Veiculo) buscaProduto).setTipo_de_veiculo(ler.next());
 				        }
 				        System.out.println("Digite o novo valor do veículo:");
 				        buscaProduto.setValor(ler.nextFloat());
 
+				        System.out.println("Dados do veículo atualizados com sucesso!");
 				    } else {
 				        System.out.println("\nVeículo com o ID informado não foi encontrado!");
 				    }
@@ -120,9 +145,12 @@ public class Menu {
 	public static void keyPress() {
 
 		try {
-			System.out.println(Cores.TEXT_RESET + "\n\nPressione Enter para Continuar...");
+
+			System.out.println(Cores.TEXT_RESET + "\nPressione Enter para Continuar...");
 			System.in.read();
+
 		} catch (IOException e) {
+
 			System.out.println("Você pressionou uma tecla diferente de enter!");
 
 		}

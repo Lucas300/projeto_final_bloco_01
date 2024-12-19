@@ -9,20 +9,13 @@ public class Veiculo extends Produto{
 		
 	}
 
-	
-	
 	public String getTipo_de_veiculo() {
 		return tipo_de_veiculo;
 	}
 
-
-
 	public void setTipo_de_veiculo(String tipo_de_veiculo) {
 		this.tipo_de_veiculo = tipo_de_veiculo;
 	}
-
-	
-
 
 	@Override
 	public void visualisar() {
@@ -30,7 +23,7 @@ public class Veiculo extends Produto{
 		System.out.println("-----------------------------------------------");
 		System.out.println("ID do veículo:"+this.getId());
 		super.visualisar();
-		System.out.println("O Tipo de ceículo é: "+this.getTipo_de_veiculo());
+		System.out.println("A Categoria do veículo: "+this.getTipo_de_veiculo());
 		System.out.println("-----------------------------------------------");
 		System.out.println();
 	}
