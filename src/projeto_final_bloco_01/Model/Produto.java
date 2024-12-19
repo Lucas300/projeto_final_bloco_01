@@ -3,17 +3,23 @@ package projeto_final_bloco_01.Model;
 public abstract class Produto {
 	
 //	int opcao = 0, ano_de_fabricacao;
+	private static int contador = 0;  // Contador estático para gerar id único
+	private int id;  // ID individual para cada produto
 	private String marca;
 	private String modelo;
 	private int ano_de_fabricacao;
 	float valor;
 	
 	public Produto(String marca, String modelo, float valor,int ano_de_fabricacao) {
+		this.id = ++contador;  // Incrementa o contador e atribui o valor ao id
 		this.marca = marca;
 		this.modelo = modelo;
 		this.valor = valor;
 		this.ano_de_fabricacao = ano_de_fabricacao;
 	}
+	public int getId() {
+        return id;
+    }
 
 	public String getMarca() {
 		return marca;
